@@ -1,22 +1,21 @@
 import Header from './header';
-import Button from './button';
+import Footer from './footer';
+import AddItem from './add.item';
 
-export default function AddOns() {
+export default function AddOns({ onNext, onPrevious, pricing }) {
   return (
     <div className='box'>
       <Header
         heading='Pick add-ons'
         subHeading='Add-ons help enhance your gaming experience'
       />
+      <AddItem pricing={pricing} />
 
-      <footer style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Button bgColor='transparent' color='hsl(231, 11%, 63%)'>
-          Go Back
-        </Button>
-        <Button bgColor='hsl(213, 96%, 18%)' color='#fff'>
-          Next Step
-        </Button>
-      </footer>
+      <Footer
+        onNext={onNext}
+        onPrevious={onPrevious}
+        bgColor='hsl(213, 96%, 18%)'
+      />
     </div>
   );
 }

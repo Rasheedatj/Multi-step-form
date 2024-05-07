@@ -1,11 +1,14 @@
 import SideBar from './components/sidebar';
 import Main from './components/main';
+import { useState } from 'react';
 function App() {
+  const [step, setStep] = useState(1);
+
   return (
     <div>
       <div className='container'>
-        <SideBar />
-        <Main />
+        <SideBar step={step} setStep={setStep} />
+        <Main step={step} setStep={setStep} />
       </div>
     </div>
   );

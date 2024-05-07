@@ -21,8 +21,7 @@ const subscription = [
   },
 ];
 
-export default function Plan() {
-  const [pricing, setPricing] = useState('monthly');
+export default function Plan({ pricing, setPricing }) {
   return (
     <div>
       <PlanItem data={subscription} pricing={pricing} />
@@ -47,13 +46,13 @@ export default function Plan() {
   );
 }
 
-function PlanItem({ pricing }) {
+function PlanItem({ data, pricing }) {
   const [curActive, setActive] = useState(0);
 
   return (
     <div className='plan'>
       {' '}
-      {subscription.map((item, i) => (
+      {data.map((item, i) => (
         <Item
           data={item}
           key={item.planName}

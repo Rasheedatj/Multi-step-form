@@ -49,6 +49,12 @@ body {
   display: grid;
   place-items: center;
   color: hsl(229, 24%, 87%);
+  font-weight: 600;
+}
+
+.sidebar .step .number.active {
+  background-color: hsl(206, 94%, 87%);
+  color: hsl(213, 96%, 18%);
 }
 
 .sidebar .step .title {
@@ -143,7 +149,8 @@ button {
   cursor: pointer;
 }
 
-.plan > div.active {
+.plan > div.active,
+.add-item.active {
   border: 1px solid hsl(243, 100%, 62%);
   background-color: hsl(231, 100%, 99%);
 }
@@ -186,4 +193,72 @@ button {
   color: hsl(213, 96%, 18%);
   font-size: 10px;
   line-height: 0;
+}
+
+input[type='checkbox'] {
+  caret-color: red;
+}
+.add-item-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.add-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid hsl(229, 24%, 87%);
+  padding: 10px 10px 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-item > div {
+  width: 75%;
+}
+
+.add-item > div h4 {
+  font-weight: 600;
+  color: hsl(213, 96%, 18%);
+  font-size: 14px;
+  line-height: 0;
+}
+
+.add-item > div p {
+  font-size: 12px;
+  color: hsl(231, 11%, 63%);
+  font-weight: 400;
+  line-height: 0;
+}
+
+.add-item > p {
+  color: hsl(243, 100%, 62%);
+  font-weight: 400;
+}
+
+.thanks {
+  align-items: center;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.thanks .text {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.thanks h1 {
+  font-weight: 700;
+  color: hsl(213, 96%, 18%);
+  font-size: 18px;
+  line-height: 5px;
+}
+
+.thanks p {
+  font-size: 14px;
+  line-height: 22px;
+  color: hsl(231, 11%, 63%);
+  width: 100%;
+  font-weight: 400;
 }

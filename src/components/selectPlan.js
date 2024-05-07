@@ -1,23 +1,25 @@
 import Header from './header';
 import Plan from './plan';
-import Button from './button';
+import Footer from './footer';
 
-export default function SelectPlan() {
+export default function SelectPlan({
+  onNext,
+  onPrevious,
+  onSetPricing,
+  pricing,
+}) {
   return (
     <div className='box'>
       <Header
         heading='Select your plan'
         subHeading='You have the option of monthly or yearly billing'
       />
-      <Plan />
-      <footer style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Button bgColor='transparent' color='hsl(231, 11%, 63%)'>
-          Go Back
-        </Button>
-        <Button bgColor='hsl(213, 96%, 18%)' color='#fff'>
-          Next Step
-        </Button>
-      </footer>
+      <Plan pricing={pricing} setPricing={onSetPricing} />
+      <Footer
+        onNext={onNext}
+        onPrevious={onPrevious}
+        bgColor='hsl(213, 96%, 18%)'
+      />
     </div>
   );
 }
