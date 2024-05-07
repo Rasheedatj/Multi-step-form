@@ -1,13 +1,189 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap');
+
+html {
+  font-size: 62.5%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: 'Ubuntu Sans', sans-serif;
+  background-color: hsl(206, 94%, 87%);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 80rem;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  height: 80vh;
+  display: flex;
+}
+
+.sidebar {
+  border-radius: 5px;
+  padding: 2rem;
+  background-image: url('../public/assets/images/bg-sidebar-desktop.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 30%;
+}
+
+.sidebar .step {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.sidebar .step .number {
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  display: grid;
+  place-items: center;
+  color: hsl(229, 24%, 87%);
+}
+
+.sidebar .step .title {
+  color: hsl(228, 100%, 84%);
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.sidebar .step .text {
+  text-transform: uppercase;
+  font: 700;
+  color: #fff;
+  font-size: 14px;
+  line-height: 5px;
+}
+
+main {
+  padding-block: 2rem;
+  width: 50%;
+  padding-right: 5rem;
+}
+
+main .box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+header {
+  margin-bottom: 3rem;
+}
+
+header h1 {
+  color: hsl(213, 96%, 18%);
+  font-size: 28px;
+  text-transform: capitalize;
+  line-height: 10px;
+}
+
+header p {
+  font-size: 14px;
+  color: hsl(231, 11%, 63%);
+  font-weight: 400;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-input input {
+  outline: none;
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: normal;
+  color: hsl(231, 11%, 63%);
+}
+
+footer {
+  display: flex;
+  justify-content: end;
+  margin-top: auto;
+}
+button {
+  border-radius: 5px;
+  padding: 10px 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.plan {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.plan > div {
+  border: 1px solid hsl(229, 24%, 87%);
+  padding: 15px 15px 5px 15px;
+  border-radius: 5px;
+  width: 50%;
+  cursor: pointer;
+}
+
+.plan > div.active {
+  border: 1px solid hsl(243, 100%, 62%);
+  background-color: hsl(231, 100%, 99%);
+}
+
+.plan .pricing {
+  margin-top: 5rem;
+}
+
+.plan .pricing h3 {
+  color: hsl(213, 96%, 18%);
+  font-weight: 600;
+  font-size: 14px;
+  margin-block: 0;
+  line-height: 10px;
+}
+
+.plan .pricing p {
+  color: hsl(231, 11%, 63%);
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.sub-type {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: hsl(231, 100%, 99%);
+  margin-top: 3rem;
+}
+
+.sub-type h4 {
+  color: hsl(231, 11%, 63%);
+  font-weight: 600;
+}
+
+.yearly h4 {
+  font-weight: 600;
+  color: hsl(213, 96%, 18%);
+  font-size: 10px;
+  line-height: 0;
 }
