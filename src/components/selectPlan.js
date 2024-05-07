@@ -7,6 +7,7 @@ export default function SelectPlan({
   onPrevious,
   onSetPricing,
   pricing,
+  setChosenPlan,
 }) {
   return (
     <div className='box'>
@@ -14,7 +15,11 @@ export default function SelectPlan({
         heading='Select your plan'
         subHeading='You have the option of monthly or yearly billing'
       />
-      <Plan pricing={pricing} setPricing={onSetPricing} />
+      <Plan
+        pricing={pricing}
+        setPricing={onSetPricing}
+        setChosenPlan={setChosenPlan}
+      />
       <Footer
         onNext={onNext}
         onPrevious={onPrevious}

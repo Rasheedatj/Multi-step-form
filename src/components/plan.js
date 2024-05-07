@@ -4,27 +4,31 @@ const subscription = [
   {
     photoName: '/assets/images/icon-pro.svg',
     planName: 'Arcade',
-    monthly: '$9/mo',
-    yearly: '$90/yr',
+    monthly: 9,
+    yearly: 90,
   },
   {
     photoName: '/assets/images/icon-advanced.svg',
     planName: 'Advanced',
-    monthly: '$12/mo',
-    yearly: '$120/yr',
+    monthly: 12,
+    yearly: 120,
   },
   {
     photoName: '/assets/images/icon-pro.svg',
     planName: 'Pro',
-    monthly: '$15/mo',
-    yearly: '$150/yr',
+    monthly: 15,
+    yearly: 150,
   },
 ];
 
-export default function Plan({ pricing, setPricing }) {
+export default function Plan({ pricing, setPricing, setChosenPlan }) {
   return (
     <div>
-      <PlanItem data={subscription} pricing={pricing} />
+      <PlanItem
+        data={subscription}
+        pricing={pricing}
+        onChoose={setChosenPlan}
+      />
 
       <div className='sub-type'>
         <h4
@@ -46,12 +50,11 @@ export default function Plan({ pricing, setPricing }) {
   );
 }
 
-function PlanItem({ data, pricing }) {
+function PlanItem({ data, pricing, onChoose }) {
   const [curActive, setActive] = useState(0);
 
   return (
     <div className='plan'>
-      {' '}
       {data.map((item, i) => (
         <Item
           data={item}
@@ -60,16 +63,24 @@ function PlanItem({ data, pricing }) {
           curActive={curActive}
           onActive={setActive}
           pricing={pricing}
+          onChoose={onChoose}
         />
       ))}
     </div>
   );
 }
 
-function Item({ data, curActive, onActive, num, pricing }) {
+function Item({ data, curActive, onActive, num, pricing, onChoose }) {
   const active = num === curActive;
+
   function handleToggle() {
     onActive(num);
+    onChoose({
+      name: data.planName,
+      monthly: data.monthly,
+      yearly: data.yearly,
+    });
+    // console.log(chosenPlan);
   }
 
   return (
@@ -79,10 +90,10 @@ function Item({ data, curActive, onActive, num, pricing }) {
       <div className='pricing'>
         <h3>{data.planName}</h3>
         {pricing === 'monthly' ? (
-          <p>{data.monthly}</p>
+          <p>${data.monthly}/mo</p>
         ) : (
           <div className='yearly'>
-            <p>{data.yearly}</p> <h4>2 months free</h4>
+            <p>${data.yearly}/yr</p> <h4>2 months free</h4>
           </div>
         )}
       </div>

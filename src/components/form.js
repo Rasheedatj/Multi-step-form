@@ -21,7 +21,7 @@ function Input({ type, placeholder, label }) {
           fontWeight: '500',
           fontSize: '14px',
         }}
-        for={label}
+        htmlFor={label}
       >
         {label}
       </label>

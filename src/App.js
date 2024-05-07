@@ -7,7 +7,7 @@ function App() {
   return (
     <div>
       <div className='container'>
-        <SideBar step={step} setStep={setStep} />
+        <SideBar step={step} />
         <Main step={step} setStep={setStep} />
       </div>
     </div>

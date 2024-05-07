@@ -3,9 +3,15 @@ import PersonalInfo from './personalInfo';
 import SelectPlan from './selectPlan';
 import AddOns from './add-ons';
 import Thanks from './thanks';
+import Summary from './summary';
 
 export default function Main({ step, setStep }) {
   const [pricing, setPricing] = useState('monthly');
+  const [chosenPlan, setChosenPlan] = useState({
+    name: 'Arcade',
+    monthly: 9,
+    yearly: 90,
+  });
 
   function handleNext() {
     if (step < 5) setStep((s) => s + 1);
@@ -23,6 +29,7 @@ export default function Main({ step, setStep }) {
           onPrevious={handlePrevious}
           pricing={pricing}
           onSetPricing={setPricing}
+          setChosenPlan={setChosenPlan}
         />
       )}
       {step === 3 && (
@@ -32,7 +39,15 @@ export default function Main({ step, setStep }) {
           pricing={pricing}
         />
       )}
-      {step === 4 && <Thanks />}
+      {step === 4 && (
+        <Summary
+          onNext={handleNext}
+          onPrevious={handlePrevious}
+          pricing={pricing}
+          chosenPlan={chosenPlan}
+        />
+      )}
+      {step === 5 && <Thanks />}
     </main>
   );
 }

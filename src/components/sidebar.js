@@ -1,4 +1,4 @@
-export default function SideBar({ step, setStep }) {
+export default function SideBar({ step }) {
   return (
     <aside className='sidebar'>
       <SideItem number={1} title='step 1' text='your info' step={step} />
