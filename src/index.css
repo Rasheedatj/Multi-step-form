@@ -6,12 +6,17 @@ html {
 
 body {
   font-family: 'Ubuntu Sans', sans-serif;
-  background-color: hsl(206, 94%, 87%);
+  background-color: hsl(217, 100%, 97%);
   height: 100vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+ul {
+  list-style: none;
+  padding-inline: 0;
 }
 
 .container {
@@ -121,6 +126,10 @@ form {
   color: hsl(231, 11%, 63%);
 }
 
+.form-input input:focus {
+  border: 1px solid hsl(243, 100%, 62%);
+}
+
 footer {
   display: flex;
   justify-content: end;
@@ -135,13 +144,17 @@ button {
   font-weight: 400;
 }
 
+button:hover {
+  opacity: 0.9;
+}
+
 .plan {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.plan > div {
+.plan > li {
   border: 1px solid hsl(229, 24%, 87%);
   padding: 15px 15px 5px 15px;
   border-radius: 5px;
@@ -149,7 +162,11 @@ button {
   cursor: pointer;
 }
 
-.plan > div.active,
+.plan > li:hover {
+  border: 1px solid hsl(243, 100%, 62%);
+}
+
+.plan > li.active,
 .add-item.active {
   border: 1px solid hsl(243, 100%, 62%);
   background-color: hsl(231, 100%, 99%);
@@ -198,6 +215,7 @@ button {
 input[type='checkbox'] {
   caret-color: red;
 }
+
 .add-item-box {
   display: flex;
   flex-direction: column;
@@ -212,6 +230,10 @@ input[type='checkbox'] {
   padding: 10px 10px 5px 10px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.add-item:hover {
+  border: 1px solid hsl(243, 100%, 62%);
 }
 
 .add-item > div {

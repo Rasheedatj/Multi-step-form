@@ -54,7 +54,7 @@ function PlanItem({ data, pricing, onChoose }) {
   const [curActive, setActive] = useState(0);
 
   return (
-    <div className='plan'>
+    <ul className='plan'>
       {data.map((item, i) => (
         <Item
           data={item}
@@ -66,7 +66,7 @@ function PlanItem({ data, pricing, onChoose }) {
           onChoose={onChoose}
         />
       ))}
-    </div>
+    </ul>
   );
 }
 
@@ -80,11 +80,10 @@ function Item({ data, curActive, onActive, num, pricing, onChoose }) {
       monthly: data.monthly,
       yearly: data.yearly,
     });
-    // console.log(chosenPlan);
   }
 
   return (
-    <div onClick={handleToggle} className={active ? 'active' : ''}>
+    <li onClick={handleToggle} className={active ? 'active' : ''}>
       <img src={data.photoName} alt={data.planName} />
 
       <div className='pricing'>
@@ -97,6 +96,6 @@ function Item({ data, curActive, onActive, num, pricing, onChoose }) {
           </div>
         )}
       </div>
-    </div>
+    </li>
   );
 }

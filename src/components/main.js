@@ -13,6 +13,22 @@ export default function Main({ step, setStep }) {
     yearly: 90,
   });
 
+  const [isOnline, setOnline] = useState({
+    stat: false,
+    monthly: 1,
+    yearly: 10,
+  });
+  const [isLargerStorage, setLargerStorage] = useState({
+    stat: false,
+    monthly: 2,
+    yearly: 20,
+  });
+  const [isCustomizeProfile, setCustomizeProfile] = useState({
+    stat: false,
+    monthly: 2,
+    yearly: 20,
+  });
+
   function handleNext() {
     if (step < 5) setStep((s) => s + 1);
   }
@@ -37,6 +53,9 @@ export default function Main({ step, setStep }) {
           onNext={handleNext}
           onPrevious={handlePrevious}
           pricing={pricing}
+          onOnline={setOnline}
+          onLargerStorage={setLargerStorage}
+          onCustomizeProfile={setCustomizeProfile}
         />
       )}
       {step === 4 && (
@@ -45,6 +64,10 @@ export default function Main({ step, setStep }) {
           onPrevious={handlePrevious}
           pricing={pricing}
           chosenPlan={chosenPlan}
+          isOnline={isOnline}
+          isLargerStorage={isLargerStorage}
+          isCustomizeProfile={isCustomizeProfile}
+          onStep={setStep}
         />
       )}
       {step === 5 && <Thanks />}

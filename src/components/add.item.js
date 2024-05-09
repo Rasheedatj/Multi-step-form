@@ -1,14 +1,20 @@
 import { useState } from 'react';
 
-export default function AddItem({ pricing }) {
+export default function AddItem({
+  pricing,
+  onOnline,
+  onLargerStorage,
+  onCustomizeProfile,
+}) {
   return (
-    <div className='add-item-box'>
+    <ul className='add-item-box'>
       <Item
         title='Online service'
         subHeading='Access to multiplayer games'
         price='+$1/mo'
         price2='+10/yr'
         pricing={pricing}
+        onOnline={onOnline}
       />
       <Item
         title='Larger storage'
@@ -16,6 +22,7 @@ export default function AddItem({ pricing }) {
         price='+$2/mo'
         price2='+20/yr'
         pricing={pricing}
+        onLargerStorage={onLargerStorage}
       />
       <Item
         title='Customizable profile'
@@ -23,22 +30,42 @@ export default function AddItem({ pricing }) {
         price='+$2/mo'
         price2='+20/yr'
         pricing={pricing}
-
-        // onToggle={handleToggle}
-        // active={active}
+        onCustomizeProfile={onCustomizeProfile}
       />
-    </div>
+    </ul>
   );
 }
 
-function Item({ title, subHeading, price, price2, pricing }) {
+function Item({
+  title,
+  subHeading,
+  price,
+  price2,
+  pricing,
+  onOnline,
+  onLargerStorage,
+  onCustomizeProfile,
+}) {
   const [active, setIsActive] = useState(false);
 
   function handleToggle() {
     setIsActive(!active);
+    if (title === 'Online service')
+      onOnline((isOnline) => ({ ...isOnline, stat: !isOnline.stat }));
+    if (title === 'Larger storage')
+      onLargerStorage((isLargerStorage) => ({
+        ...isLargerStorage,
+        stat: !isLargerStorage.stat,
+      }));
+    if (title === 'Customizable profile')
+      onCustomizeProfile((isCustomizeProfile) => ({
+        ...isCustomizeProfile,
+        stat: !isCustomizeProfile.stat,
+      }));
   }
+
   return (
-    <div className={`add-item ${active ? 'active' : ''}`}>
+    <li className={`add-item ${active ? 'active' : ''}`}>
       <input type='checkbox' onChange={handleToggle} />
       <div>
         <h4>{title}</h4>
@@ -46,6 +73,6 @@ function Item({ title, subHeading, price, price2, pricing }) {
       </div>
 
       <p>{`${pricing === 'monthly' ? price : price2}`}</p>
-    </div>
+    </li>
   );
 }
