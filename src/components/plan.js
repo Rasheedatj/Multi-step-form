@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 const subscription = [
   {
     photoName: '/assets/images/icon-pro.svg',
@@ -21,13 +19,19 @@ const subscription = [
   },
 ];
 
-export default function Plan({ pricing, setPricing, setChosenPlan }) {
+export default function Plan({
+  pricing,
+  setPricing,
+  setChosenPlan,
+  chosenPlan,
+}) {
   return (
     <div>
       <PlanItem
         data={subscription}
         pricing={pricing}
         onChoose={setChosenPlan}
+        chosenPlan={chosenPlan}
       />
 
       <div className='sub-type'>
@@ -41,6 +45,7 @@ export default function Plan({ pricing, setPricing, setChosenPlan }) {
           onChange={() =>
             setPricing(pricing === 'monthly' ? 'yearly' : 'monthly')
           }
+          checked={pricing === 'yearly'}
         />
         <h4 style={{ color: pricing === 'yearly' ? 'hsl(213, 96%, 18%)' : '' }}>
           Yearly
@@ -50,31 +55,30 @@ export default function Plan({ pricing, setPricing, setChosenPlan }) {
   );
 }
 
-function PlanItem({ data, pricing, onChoose }) {
-  const [curActive, setActive] = useState(0);
-
+function PlanItem({ data, pricing, onChoose, chosenPlan }) {
   return (
     <ul className='plan'>
       {data.map((item, i) => (
         <Item
           data={item}
-          key={item.planName}
-          num={i}
-          curActive={curActive}
-          onActive={setActive}
           pricing={pricing}
           onChoose={onChoose}
+          chosenPlan={chosenPlan}
+          key={i}
         />
       ))}
     </ul>
   );
 }
 
-function Item({ data, curActive, onActive, num, pricing, onChoose }) {
-  const active = num === curActive;
+function Item({
+  data,
 
+  pricing,
+  onChoose,
+  chosenPlan,
+}) {
   function handleToggle() {
-    onActive(num);
     onChoose({
       name: data.planName,
       monthly: data.monthly,
@@ -83,7 +87,12 @@ function Item({ data, curActive, onActive, num, pricing, onChoose }) {
   }
 
   return (
-    <li onClick={handleToggle} className={active ? 'active' : ''}>
+    <li
+      onClick={handleToggle}
+      className={
+        chosenPlan ? (data.planName === chosenPlan.name ? 'active' : '') : ''
+      }
+    >
       <img src={data.photoName} alt={data.planName} />
 
       <div className='pricing'>

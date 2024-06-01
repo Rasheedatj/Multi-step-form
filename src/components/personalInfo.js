@@ -1,8 +1,8 @@
-import Header from './header';
-import Form from './form';
-import Button from './button';
+import { Link } from 'react-router-dom';
+import Header from './Header';
+import Form from './Form';
 
-export default function PersonalInfo({ onNext }) {
+export default function PersonalInfo({ handleNext }) {
   return (
     <div className='box'>
       <Header
@@ -12,14 +12,17 @@ export default function PersonalInfo({ onNext }) {
       <Form />
 
       <footer>
-        <Button
-          bgColor='hsl(213, 96%, 18%)'
-          color='hsl(0, 0%, 100%)'
-          onClickNext={onNext}
-          direction='next'
-        >
-          Next Step
-        </Button>
+        <Link to='/selectplan'>
+          <button
+            style={{
+              backgroundColor: 'hsl(213, 96%, 18%)',
+              color: 'hsl(0, 0%, 100%)',
+            }}
+            onClick={handleNext}
+          >
+            Next
+          </button>
+        </Link>
       </footer>
     </div>
   );

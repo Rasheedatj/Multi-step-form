@@ -1,9 +1,7 @@
-import Header from './header';
-import Footer from './footer';
+import Header from './Header';
+import Footer from './Footer';
 
 export default function Summary({
-  onNext,
-  onPrevious,
   pricing,
   chosenPlan,
   isOnline,
@@ -84,11 +82,7 @@ export default function Summary({
           +${planCost + additionalCost}/{pricing === 'monthly' ? 'mo' : 'yr'}
         </h3>
       </div>
-      <Footer
-        onNext={onNext}
-        onPrevious={onPrevious}
-        bgColor='hsl(243, 100%, 62%)'
-      />
+      <Footer nextPage='/thanks' prevPage='/pickaddson' />
     </div>
   );
 }

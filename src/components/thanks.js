@@ -1,4 +1,4 @@
-export default function Thanks() {
+export default function ThanksCom() {
   return (
     <div className='thanks box'>
       <div>

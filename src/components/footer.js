@@ -1,24 +1,28 @@
-import Button from './button';
+import { Link } from 'react-router-dom';
 
-export default function Footer({ onNext, onPrevious, bgColor }) {
+export default function Footer({ nextPage, prevPage }) {
   return (
     <footer style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <Button
-        bgColor='transparent'
-        color='hsl(231, 11%, 63%)'
-        onClickPrevious={onPrevious}
-        direction='previous'
-      >
-        Go Back
-      </Button>
-      <Button
-        bgColor={bgColor}
-        color='#fff'
-        onClickNext={onNext}
-        direction='next'
-      >
-        Next Step
-      </Button>
+      <Link to={prevPage}>
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'hsl(231, 11%, 63%)',
+          }}
+        >
+          Prev
+        </button>
+      </Link>
+      <Link to={nextPage}>
+        <button
+          style={{
+            backgroundColor: 'hsl(213, 96%, 18%)',
+            color: 'hsl(0, 0%, 100%)',
+          }}
+        >
+          Next
+        </button>
+      </Link>
     </footer>
   );
 }

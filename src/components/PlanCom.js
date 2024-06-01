@@ -1,13 +1,12 @@
-import Header from './header';
-import Plan from './plan';
-import Footer from './footer';
+import Header from './Header';
+import Plan from './Plan';
+import Footer from './Footer';
 
-export default function SelectPlan({
-  onNext,
-  onPrevious,
+export default function PlanCom({
   onSetPricing,
   pricing,
   setChosenPlan,
+  chosenPlan,
 }) {
   return (
     <div className='box'>
@@ -19,12 +18,10 @@ export default function SelectPlan({
         pricing={pricing}
         setPricing={onSetPricing}
         setChosenPlan={setChosenPlan}
+        chosenPlan={chosenPlan}
       />
-      <Footer
-        onNext={onNext}
-        onPrevious={onPrevious}
-        bgColor='hsl(213, 96%, 18%)'
-      />
+
+      <Footer nextPage='/pickaddson' prevPage='/' />
     </div>
   );
 }
