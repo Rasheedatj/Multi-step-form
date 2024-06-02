@@ -1,10 +1,10 @@
 import PersonalInfo from '../components/personalInfo';
 import Main from '../components/Main';
-function Homepage({ step, handleNext }) {
+function Homepage() {
   return (
     <>
       <Main>
-        <PersonalInfo handleNext={handleNext} />
+        <PersonalInfo />
       </Main>
     </>
   );

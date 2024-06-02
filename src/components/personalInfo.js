@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Header from './Header';
 import Form from './Form';
 
-export default function PersonalInfo({ handleNext }) {
+export default function PersonalInfo() {
   return (
     <div className='box'>
       <Header
@@ -18,7 +18,7 @@ export default function PersonalInfo({ handleNext }) {
               backgroundColor: 'hsl(213, 96%, 18%)',
               color: 'hsl(0, 0%, 100%)',
             }}
-            onClick={handleNext}
+          
           >
             Next
           </button>

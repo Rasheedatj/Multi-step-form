@@ -6,8 +6,8 @@ import PickAddsOn from './pages/PickAddsOn';
 import FinishingUp from './pages/FinishingUp';
 import Thanks from './pages/Thanks';
 import SideBar from './components/Sidebar';
-import SummaryProvider from './components/SummaryProvider';
-import PlanProvider from './components/PlanProvider';
+import { SummaryProvider } from './components/SummaryProvider';
+import { PlanProvider } from './components/PlanProvider';
 
 function App() {
   const [step, setStep] = useState(1);
@@ -24,20 +24,17 @@ function App() {
     <div className='container'>
       <SideBar />
       <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Homepage step={step} />} />
-
-          <PlanProvider>
-            <Route path='selectplan' element={<SelectPlan step={step} />} />
-          </PlanProvider>
-
+        <PlanProvider>
           <SummaryProvider>
-            <Route path='pickaddson' element={<PickAddsOn />} />
-            <Route path='finishingup' element={<FinishingUp />} />
+            <Routes>
+              <Route path='/' element={<Homepage />} />
+              <Route path='selectplan' element={<SelectPlan />} />
+              <Route path='pickaddson' element={<PickAddsOn />} />
+              <Route path='finishingup' element={<FinishingUp />} />
+              <Route path='thanks' element={<Thanks />} />
+            </Routes>
           </SummaryProvider>
-
-          <Route path='thanks' element={<Thanks />} />
-        </Routes>
+        </PlanProvider>
       </BrowserRouter>
     </div>
   );

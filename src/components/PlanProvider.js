@@ -11,7 +11,7 @@ function PlanProvider({ children }) {
   });
   return (
     <PlanContext.Provider
-      value={{ setChosenPlan, chosenPlan, pricing, setPricing }}
+      value={{ chosenPlan, onChoose: setChosenPlan, pricing, setPricing }}
     >
       {children}
     </PlanContext.Provider>

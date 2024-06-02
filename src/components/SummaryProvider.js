@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer, useState } from 'react';
+import { usePlan } from './PlanProvider';
 
 // initial states of isOnline, isLargerStorage, isCustomizeProfile
 const initialState = {
@@ -57,7 +58,8 @@ function reducer(state, action) {
 const SummaryContext = createContext();
 
 function SummaryProvider({ children }) {
-  const [pricing, setPricing] = useState('monthly');
+  // derived pricing from PlanProvider
+  const { pricing } = usePlan();
   const [chosenPlan, setChosenPlan] = useState({
     name: 'Arcade',
     monthly: 9,
@@ -81,6 +83,7 @@ function SummaryProvider({ children }) {
   );
 }
 
+// custom hook for consuming SummaryContext
 function useSummary() {
   const context = useContext(SummaryContext);
   if (context === undefined) throw new Error('Context was used out of scope');
