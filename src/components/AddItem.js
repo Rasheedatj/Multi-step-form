@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useSummary } from './SummaryProvider';
 
 const extras = [
   {
@@ -22,23 +22,19 @@ const extras = [
   },
 ];
 
-export default function AddItem({ pricing, dispatch }) {
+export default function AddItem() {
   return (
     <ul className='add-item-box'>
       {extras.map((extra) => (
-        <ExtraItem
-          key={extra.title}
-          data={extra}
-          pricing={pricing}
-          dispatch={dispatch}
-        />
+        <ExtraItem key={extra.title} data={extra} />
       ))}
     </ul>
   );
 }
 
-function ExtraItem({ data, dispatch, pricing }) {
+function ExtraItem({ data }) {
   const [active, setActive] = useState(false);
+  const { pricing, dispatch } = useSummary();
 
   function handleToggle() {
     setActive((a) => !a);

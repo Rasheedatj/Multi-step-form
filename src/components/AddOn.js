@@ -2,7 +2,7 @@ import Header from './Header';
 import Footer from './Footer';
 import AddItem from './AddItem';
 
-export default function AddOns({ pricing, dispatch }) {
+export default function AddOns() {
   return (
     <div className='box'>
       <Header
@@ -10,7 +10,7 @@ export default function AddOns({ pricing, dispatch }) {
         subHeading='Add-ons help enhance your gaming experience'
       />
 
-      <AddItem pricing={pricing} dispatch={dispatch} />
+      <AddItem />
 
       <Footer nextPage='/finishingup' prevPage='/selectplan' />
     </div>

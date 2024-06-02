@@ -1,22 +1,11 @@
 import Main from '../components/Main';
 import PlanCom from '../components/PlanCom';
 
-function SelectPlan({
-  step,
-  onSetPricing,
-  pricing,
-  setChosenPlan,
-  chosenPlan,
-}) {
+function SelectPlan({ step }) {
   return (
     <>
       <Main>
-        <PlanCom
-          onSetPricing={onSetPricing}
-          pricing={pricing}
-          setChosenPlan={setChosenPlan}
-          chosenPlan={chosenPlan}
-        />
+        <PlanCom />
       </Main>
     </>
   );

@@ -1,14 +1,10 @@
 import Header from './Header';
 import Footer from './Footer';
-
-export default function Summary({
-  pricing,
-  chosenPlan,
-  isOnline,
-  isLargerStorage,
-  isCustomizeProfile,
-  onStep,
-}) {
+import { useSummary } from './SummaryProvider';
+export default function Summary({ onStep }) {
+  // consume these values from summary context
+  const { isCustomizeProfile, isOnline, pricing, isLargerStorage, chosenPlan } =
+    useSummary();
   const planCost =
     pricing === 'monthly' ? chosenPlan.monthly : chosenPlan.yearly;
 

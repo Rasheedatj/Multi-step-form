@@ -1,3 +1,5 @@
+import { usePlan } from './PlanProvider';
+
 const subscription = [
   {
     photoName: '/assets/images/icon-pro.svg',
@@ -19,20 +21,12 @@ const subscription = [
   },
 ];
 
-export default function Plan({
-  pricing,
-  setPricing,
-  setChosenPlan,
-  chosenPlan,
-}) {
+export default function Plan() {
+  const { setPricing, pricing } = usePlan();
+
   return (
     <div>
-      <PlanItem
-        data={subscription}
-        pricing={pricing}
-        onChoose={setChosenPlan}
-        chosenPlan={chosenPlan}
-      />
+      <PlanItem data={subscription} />
 
       <div className='sub-type'>
         <h4
@@ -55,29 +49,18 @@ export default function Plan({
   );
 }
 
-function PlanItem({ data, pricing, onChoose, chosenPlan }) {
+function PlanItem({ data }) {
   return (
     <ul className='plan'>
       {data.map((item, i) => (
-        <Item
-          data={item}
-          pricing={pricing}
-          onChoose={onChoose}
-          chosenPlan={chosenPlan}
-          key={i}
-        />
+        <Item data={item} key={i} />
       ))}
     </ul>
   );
 }
 
-function Item({
-  data,
-
-  pricing,
-  onChoose,
-  chosenPlan,
-}) {
+function Item({ data }) {
+  const { onChoose, chosenPlan, pricing } = usePlan();
   function handleToggle() {
     onChoose({
       name: data.planName,
