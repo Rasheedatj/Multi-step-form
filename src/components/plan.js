@@ -1,4 +1,4 @@
-import { usePlan } from './PlanProvider';
+import { usePlan } from '../contexts/PlanProvider';
 
 const subscription = [
   {

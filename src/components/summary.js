@@ -1,6 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
-import { useSummary } from './SummaryProvider';
+import { useSummary } from '../contexts/SummaryProvider';
 export default function Summary({ onStep }) {
   // consume these values from summary context
   const { isCustomizeProfile, isOnline, pricing, isLargerStorage, chosenPlan } =

@@ -58,13 +58,13 @@ function reducer(state, action) {
 const SummaryContext = createContext();
 
 function SummaryProvider({ children }) {
-  // derived pricing from PlanProvider
-  const { pricing } = usePlan();
-  const [chosenPlan, setChosenPlan] = useState({
-    name: 'Arcade',
-    monthly: 9,
-    yearly: 90,
-  });
+  // derived pricing and chosenPlan from PlanProvider
+  const { pricing, chosenPlan } = usePlan();
+  // const [chosenPlan, setChosenPlan] = useState({
+  //   name: 'Arcade',
+  //   monthly: 9,
+  //   yearly: 90,
+  // });
   const [state, dispatch] = useReducer(reducer, initialState);
   const { largerStorage, Online, customizeProfile } = state;
   return (

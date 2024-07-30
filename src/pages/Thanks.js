@@ -1,10 +1,10 @@
-import ThanksCom from '../components/Thanks';
+import ThanksComponent from '../components/Thanks';
 import Main from '../components/Main';
 function Thanks() {
   return (
     <>
       <Main>
-        <ThanksCom />
+        <ThanksComponent />
       </Main>
     </>
   );
