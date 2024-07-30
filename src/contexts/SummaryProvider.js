@@ -60,6 +60,8 @@ const SummaryContext = createContext();
 function SummaryProvider({ children }) {
   // derived pricing and chosenPlan from PlanProvider
   const { pricing, chosenPlan } = usePlan();
+  const [active, setActive] = useState({});
+
   // const [chosenPlan, setChosenPlan] = useState({
   //   name: 'Arcade',
   //   monthly: 9,
@@ -76,6 +78,8 @@ function SummaryProvider({ children }) {
         isLargerStorage: largerStorage,
         isCustomizeProfile: customizeProfile,
         dispatch,
+        active,
+        setActive,
       }}
     >
       {children}

@@ -1,27 +1,7 @@
-import { useReducer } from 'react';
-
-const initialState = {
-  name: '',
-  email: '',
-  phoneNumber: '',
-};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case 'setName':
-      return { ...state, name: action.payload };
-    case 'setEmail':
-      return { ...state, email: action.payload };
-    case 'setPhoneNumber':
-      return { ...state, phoneNumber: action.payload };
-    default:
-      throw new Error('Action unkown');
-  }
-}
+import { usePlan } from '../contexts/PlanProvider';
 
 export default function Form() {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const { name, email, phoneNumber } = state;
+  const { name, email, dispatch, phoneNumber } = usePlan();
   return (
     <form>
       <Input
@@ -55,14 +35,7 @@ export default function Form() {
   );
 }
 
-function Input({
-  type,
-  placeholder,
-  children,
-  inputValue,
-  dispatch,
-  dispatchType,
-}) {
+function Input({ type, placeholder, children, value, dispatch, dispatchType }) {
   return (
     <div className='form-input'>
       <label
@@ -78,7 +51,7 @@ function Input({
       <input
         type={type}
         placeholder={placeholder}
-        value={inputValue}
+        value={value}
         onChange={(e) =>
           dispatch({ type: dispatchType, payload: e.target.value })
         }

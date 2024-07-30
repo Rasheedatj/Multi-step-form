@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useSummary } from '../contexts/SummaryProvider';
 
 const extras = [
@@ -23,21 +22,36 @@ const extras = [
 ];
 
 export default function AddItem() {
+  // active states from context to persist it across renders
+  const { active, setActive } = useSummary();
+
+  function toggleItem(title) {
+    setActive((prev) => ({
+      ...prev,
+      [title]: !prev[title],
+    }));
+  }
+
   return (
     <ul className='add-item-box'>
       {extras.map((extra) => (
-        <ExtraItem key={extra.title} data={extra} />
+        <ExtraItem
+          key={extra.title}
+          data={extra}
+          toggleItem={() => toggleItem(extra.title)}
+          isActive={!!active[extra.title]}
+        />
       ))}
     </ul>
   );
 }
 
-function ExtraItem({ data }) {
-  const [active, setActive] = useState(false);
+function ExtraItem({ data, toggleItem, isActive }) {
   const { pricing, dispatch } = useSummary();
 
   function handleToggle() {
-    setActive((a) => !a);
+    toggleItem();
+
     if (data.title === 'Online service') {
       dispatch({ type: 'setOnline' });
     }
@@ -45,9 +59,13 @@ function ExtraItem({ data }) {
     if (data.title === 'Customizable profile')
       dispatch({ type: 'setCustomizeProfile' });
   }
+
   return (
-    <li className={`add-item ${active ? 'active' : ''}`}>
-      <input type='checkbox' onChange={handleToggle} />
+    <li
+      className={`add-item ${isActive ? 'active' : ''}`}
+      onClick={handleToggle}
+    >
+      <input type='checkbox' checked={isActive} />
       <div>
         <h4>{data.title}</h4>
         <p>{data.subHeading}</p>

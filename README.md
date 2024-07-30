@@ -1,8 +1,8 @@
-# Getting Started with Create React App
+# React Multi-Step Form
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Table of content
 
 In the project directory, you can run:
 
